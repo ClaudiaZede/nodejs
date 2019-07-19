@@ -1,0 +1,9 @@
+{
+    "GET/" : {"controler": "index"},
+    "GET/users": {"controler": "users"},
+    "GET/exos": {"controler": "exos"},
+    "GET/formUser": {"controler": "formUser"},
+    "GET/modifyUser": {"controler": "modifyUser"},
+    "GET/newUser": {"controler": "newUser"},
+    "GET/createUser": {"controler": "createUser"}
+}

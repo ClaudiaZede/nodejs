@@ -5,3 +5,14 @@
  <option value="{{this._id}}">{{this.libelle}}</option>
  {{/each}}
 </select>
+
+<h1> Express App : {{exos.title}}</h1><br>
+<select name="exos">
+ {{#each exos}}
+ {{#compare this.libelle 'Exos4' operator='=='}}
+ <option value="{{this._id}}" selected>{{this.libelle}}</option>
+ {{else}}
+ <option value="{{this._id}}">{{this.libelle}}</option>
+ {{/compare}}
+ {{/each}}
+</select>

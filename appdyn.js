@@ -4,18 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var usersRouter = require('./routes/users');
-var exosRouter = require('./routes/exos');
-
-var formUser = require('./routes/formUser');
-var modifyUser = require('./routes/modifyUser');
-
-var newUser = require('./routes/newUser');
-var createUser = require('./routes/createUser');
-
+/* chargement configuration JSON des actions --> controleurs */
+global.actions_json = JSON.parse(fs.readFileSync("./routes/config_actions.json", 'utf8'));
+// Gestion des routes dynamiques via configuration json
+require('./dynamicRouter')(app);
 
 var hbs = require('hbs');
 hbs.registerPartials(__dirname + '/views/partials', function() {
@@ -57,17 +49,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-app.use('/formUser', formUser); // affichera le formulaire
-app.use('/modifyUser', modifyUser); // Enregistre les données dans la base
-
-app.use('/createUser', createUser);
-app.use('/newUser', newUser);
-
-app.use('/exos', exosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
