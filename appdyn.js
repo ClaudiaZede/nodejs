@@ -11,6 +11,7 @@ var fs = require('fs');
 global.actions_json = JSON.parse(fs.readFileSync("./routes/config_actions.json", 'utf8'));
 
 var hbs = require('hbs');
+
 hbs.registerPartials(__dirname + '/views/partials', function() {
     console.log('partials registered');
 });
